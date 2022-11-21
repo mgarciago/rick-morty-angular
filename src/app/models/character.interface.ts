@@ -5,8 +5,12 @@ export interface CharacterInterface {
     species?: string;
     type?: string;
     gender?: string;
-    origin?: OriginInterface;
-    location?: LocationInterface;
+    origin?: {
+      name: string,
+    };
+    location?: {
+      name: string,
+    }
     image?: string;
     url?: string
   }
@@ -19,12 +23,4 @@ export interface CharacterInterface {
       prev: string;
     };
     results: CharacterInterface[];
-  }
-  
-  export interface OriginInterface {
-    name: string;
-  }
-  
-  export interface LocationInterface {
-    name: string;
   }

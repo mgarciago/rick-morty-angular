@@ -45,12 +45,5 @@ public newCharacter = this.characterService.characterData;
     }, 300)
   }
 
-  public delete() {
-    this.characterService.deleteCharacter(this.characterID).subscribe();
-    this.characterService.clearForm();
-    Swal.fire("Character deleted");
-    this.router.navigate(["/creations"]);
-  }
-
 }
 

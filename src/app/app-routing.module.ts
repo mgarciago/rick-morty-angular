@@ -15,6 +15,9 @@ const routes: Routes = [
     path: `details`, loadChildren: () => import('./pages/detail/detail.module').then(m => m.DetailModule)
   },
   {
+    path: `creations-details`, loadChildren: () => import ('./pages/creations-detail/creations-detail.module').then(m => m.CreationsDetailModule)
+  },
+  {
     path: `form`, loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule)
   },
   {

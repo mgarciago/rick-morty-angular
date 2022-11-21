@@ -1,0 +1,15 @@
+<div class="creationsDetail-container">
+    <div class="image-container">
+        <img [src]="creationDetail.image" alt="creationDetail.name">
+    </div>
+    <div class="info-container">
+    <h4>{{creationDetail.name}}</h4>
+    <p>Status: {{creationDetail.status}}</p>
+    <p>Specie: {{creationDetail.species}}</p>
+    <p>Type: {{creationDetail.type}}</p>
+    <p>Gender: {{creationDetail.gender}}</p>
+    </div>
+</div>
+
+<button mat-raised-button (click)="editCharacter(creationDetail)">Edit</button>
+<button mat-raised-button (click)="delete()">Delete</button>

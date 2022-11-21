@@ -4,17 +4,23 @@ import { CommonModule } from '@angular/common';
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button'
+import {MatFormFieldModule} from '@angular/material/form-field';
 
+const modules = [
+  CommonModule,
+    FormRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatButtonModule,
+]
 
 @NgModule({
   declarations: [
     FormComponent
   ],
   imports: [
-    CommonModule,
-    FormRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
+    ...modules
   ],
 })
 export class FormModule { }

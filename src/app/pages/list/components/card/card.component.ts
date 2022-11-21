@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CharacterInterface } from 'src/app/models/character.interface';
+import { CharacterInterface} from 'src/app/models/character.interface';
 import { CharactersService } from 'src/app/shared/services/characters.service';
 
 @Component({

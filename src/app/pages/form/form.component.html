@@ -1,14 +1,12 @@
-<h2>CREATE YOUR CHARACTER!</h2>
+<h3>CREATE YOUR CHARACTER!</h3>
 
 <section>
     <figure>
         <img *ngIf="newCharacter.image != ''" src="{{newCharacter.image}}" alt="{{newCharacter.name}}">
-        <h5>{{newCharacter.name}}</h5>
-        <p>{{newCharacter.status}}</p>
-        <p>{{newCharacter.type}}</p>
-        <p>{{newCharacter.gender}}</p>
-        <p>{{newCharacter.origin.name}}</p>
-        <p>{{newCharacter.location.name}}</p>
+        <h4>{{newCharacter.name}}</h4>
+        <p>Status: {{newCharacter.status}}</p>
+        <p>Type: {{newCharacter.type}}</p>
+        <p>Gender: {{newCharacter.gender}}</p>
     </figure>
     <form novalidate [formGroup]="characterForm" (ngSubmit)="onSubmit()">
         <label for="image">Image</label>
@@ -21,13 +19,10 @@
         <input type="text" formControlName="type">
         <label for="gender">Gender</label>
         <input type="text" formControlName="gender">
-        <label for="origin">Origin</label>
-        <input type="text" formControlName="origin">
-        <label for="location">Location</label>
-        <input type="text" formControlName="location">
+    
 
-        <button *ngIf="characterID !== ''" type="submit">Edit</button>
-        <button *ngIf="characterID === ''" type="submit">Create</button>
-        <button *ngIf="characterID !== ''" (click)="delete()">Delete</button>
+        <button mat-raised-button *ngIf="characterID !== ''" type="submit">Edit</button>
+        <button mat-raised-button *ngIf="characterID === ''" type="submit">Create</button>
+        
     </form>
 </section>

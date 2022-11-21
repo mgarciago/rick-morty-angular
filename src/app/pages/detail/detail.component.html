@@ -1,5 +1,13 @@
-<div class="container">
-    
-    <h3>{{detail.name}}</h3>
+<div class="detail-container">
+    <div class="image-container">
+        <img [src]="detail.image" alt="detail.name">
+    </div>
+    <div class="info-container">
+    <h4>{{detail.name}}</h4>
+    <p>Status: {{detail.status}}</p>
+    <p>Specie: {{detail.species}}</p>
+    <p>Type: {{detail.type}}</p>
+    <p>Gender: {{detail.gender}}</p>
+    </div>
 
 </div>

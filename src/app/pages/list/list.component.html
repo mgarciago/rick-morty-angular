@@ -1,6 +1,11 @@
 <h3> {{title | uppercase}}</h3>
 <input type="text" [(ngModel)]="filter">
-<div class="container" *ngIf="characterList">
+<div class="list-container" *ngIf="characterList">
     <app-card *ngFor="let character of (characterList | filterObject: filter: 'name')" [character]="character">
     </app-card>
 </div>
+<div class="list-container" *ngIf="moreCharacterList">
+    <app-card *ngFor="let character of (moreCharacterList | filterObject: filter: 'name')" [character]="character">
+    </app-card>
+</div>
+

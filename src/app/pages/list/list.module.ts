@@ -6,6 +6,15 @@ import { ListComponent } from './list.component';
 import { ListRoutingModule } from './list-routing.module';
 import { CardComponent } from './components/card/card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {MatPaginatorModule} from '@angular/material/paginator'
+
+const modules = [
+    CommonModule,
+    FormsModule,
+    ListRoutingModule,
+    SharedModule,
+    MatPaginatorModule
+]
 
 @NgModule({
     declarations: [
@@ -13,10 +22,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
         CardComponent
     ],
     imports: [
-        CommonModule,
-        FormsModule,
-        ListRoutingModule,
-        SharedModule
+        ...modules
     ]
 })
 export class ListModule {}

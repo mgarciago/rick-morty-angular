@@ -10,6 +10,7 @@ export class CharactersService {
   public charactersURL: string = this.baseURL + "character";
   public dataBaseURL: string = "http://localhost:3000/creations"
   public characterDetailURL: string = "";
+  public nextPageURL: string = "";
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +18,7 @@ export class CharactersService {
     id: "",
     name: "",
     status: "",
+    species: "",
     type: "",
     gender: "",
     origin: {
@@ -33,6 +35,7 @@ export class CharactersService {
       id: "",
       name: "",
       status: "",
+      species: "",
       type: "",
       gender: "",
       origin: {
@@ -58,11 +61,19 @@ export class CharactersService {
     console.log(this.characterDetailURL)
   }
 
+  
   public getCharacterDetail() {
-    console.log(this.characterDetailURL)
     return this.http.get(this.characterDetailURL)
   }
+  
+  public getNextPageURL(url: any){
+    this.nextPageURL = url.next;
+    console.log(this.nextPageURL)
+  }
 
+  public showNextPage():Observable<any> {
+    return this.http.get(this.nextPageURL)
+  }
   public postCharacter(newCharacter: any) {
     return this.http.post(this.dataBaseURL, newCharacter)
   }
