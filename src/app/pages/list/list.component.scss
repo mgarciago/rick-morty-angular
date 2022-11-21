@@ -1,0 +1,28 @@
+h3 {
+    font-family: "Get Schwifty";
+    letter-spacing: 8px;
+    font-size: 100px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    width: 50%;
+    padding: 15px;
+    border: 5px solid black;
+    border-radius: 50px;
+    background-color: chartreuse;
+    margin-bottom: auto;
+    font-size: 20x;
+    color: black;
+    font-family: fantasy;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-items: center;
+}

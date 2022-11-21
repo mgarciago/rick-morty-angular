@@ -1,0 +1,33 @@
+<h2>CREATE YOUR CHARACTER!</h2>
+
+<section>
+    <figure>
+        <img *ngIf="newCharacter.image != ''" src="{{newCharacter.image}}" alt="{{newCharacter.name}}">
+        <h5>{{newCharacter.name}}</h5>
+        <p>{{newCharacter.status}}</p>
+        <p>{{newCharacter.type}}</p>
+        <p>{{newCharacter.gender}}</p>
+        <p>{{newCharacter.origin.name}}</p>
+        <p>{{newCharacter.location.name}}</p>
+    </figure>
+    <form novalidate [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+        <label for="image">Image</label>
+        <input type="text" formControlName="image">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name">
+        <label for="status">Status</label>
+        <input type="text" formControlName="status">
+        <label for="type">Type</label>
+        <input type="text" formControlName="type">
+        <label for="gender">Gender</label>
+        <input type="text" formControlName="gender">
+        <label for="origin">Origin</label>
+        <input type="text" formControlName="origin">
+        <label for="location">Location</label>
+        <input type="text" formControlName="location">
+
+        <button *ngIf="characterID !== ''" type="submit">Edit</button>
+        <button *ngIf="characterID === ''" type="submit">Create</button>
+        <button *ngIf="characterID !== ''" (click)="delete()">Delete</button>
+    </form>
+</section>
