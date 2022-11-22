@@ -67,11 +67,12 @@ export class CharactersService {
   }
   
   public getNextPageURL(url: any){
-    this.nextPageURL = url.next;
+    this.nextPageURL = url;
     console.log(this.nextPageURL)
   }
 
   public showNextPage():Observable<any> {
+    console.log(this.nextPageURL)
     return this.http.get(this.nextPageURL)
   }
   public postCharacter(newCharacter: any) {
