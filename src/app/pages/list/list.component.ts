@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
     this.filter = '';
     this.title = 'Characters';
     this.page = 0;
-    this.numberPage = 1;
+    this.numberPage = 0;
     
   }
 
@@ -53,13 +53,13 @@ export class ListComponent implements OnInit {
   }
 
   public nextPage() {
-    this.numberPage += 10;
+    this.numberPage += 20;
     console.log(this.numberPage)
   }
 
   public prevPage() {
     if(this.numberPage > 1){
-      this.numberPage -= 10;
+      this.numberPage -= 20;
     }
   } 
 

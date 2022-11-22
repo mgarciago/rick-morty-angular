@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterObjectPipe implements PipeTransform {
 
-  transform(list: any[], filter: string = '', key: any, numberPage: number = 1): any[] {
+  transform(list: any[], filter: string = '', key: any, numberPage: number = 0): any[] {
 
     if(filter.length === 0) {
       return list.slice(numberPage, numberPage + 20);
