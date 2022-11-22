@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   CharacterInterface,
   CharacterResponseInterface,
@@ -18,13 +18,16 @@ export class ListComponent implements OnInit {
   public nextPage: string;
   public filter: string;
   public title: string;
+  public page?: string;
   constructor(
     private characterService: CharactersService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.filter = '';
     this.title = 'Characters';
     this.nextPage = '';
+    
   }
 
   ngOnInit(): void {
@@ -34,24 +37,8 @@ export class ListComponent implements OnInit {
         this.characterList = data.results;
       });
 
-    this.characterService
-      .getCharacters()
-      .subscribe((data: any) => {
-        this.apiInfo = data.info.next;
-        console.log(this.apiInfo)
-      });
+      this.characterService.getMoreCharacters(this.page).subscribe
+
   }
 
-  public nextPageURL(url: any) {
-    this.characterService.getNextPageURL(url);
-  }
-
-  public loadMoreCharacters(){
-    this.characterService
-    .showNextPage()
-    .subscribe((data: CharacterResponseInterface) => {
-      this.characterList = data.results;
-      console.log(this.characterList)
-    });
-  }
 }

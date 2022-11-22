@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,10 @@ export class CharactersService {
   public dataBaseURL: string = "http://localhost:3000/creations"
   public characterDetailURL: string = "";
   public nextPageURL: string = "";
+  public page: string = "";
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  
   public characterData = {
     id: "",
     name: "",
@@ -66,15 +68,6 @@ export class CharactersService {
     return this.http.get(this.characterDetailURL)
   }
   
-  public getNextPageURL(url: any){
-    this.nextPageURL = url;
-    console.log(this.nextPageURL)
-  }
-
-  public showNextPage():Observable<any> {
-    console.log(this.nextPageURL)
-    return this.http.get(this.nextPageURL)
-  }
   public postCharacter(newCharacter: any) {
     return this.http.post(this.dataBaseURL, newCharacter)
   }
@@ -89,6 +82,10 @@ export class CharactersService {
 
   public getCharacters():Observable<any> {
     return this.http.get(this.charactersURL);
+  }
+
+  public getMoreCharacters(page: any):Observable<any>{
+    return this.http.get(`${this.charactersURL}/${page=this.page}`)
   }
 
   public getMyCreations():Observable<any> {

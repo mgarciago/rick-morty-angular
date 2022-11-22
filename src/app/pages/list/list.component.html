@@ -1,6 +1,4 @@
 <h3> {{title | uppercase}}</h3>
-<button (click)="nextPageURL(apiInfo)">Next</button>
-<button (click)="loadMoreCharacters">More</button>
 <input type="text" [(ngModel)]="filter">
 <div class="list-container" *ngIf="characterList">
     <app-card *ngFor="let character of (characterList | filterObject: filter: 'name')" [character]="character">
