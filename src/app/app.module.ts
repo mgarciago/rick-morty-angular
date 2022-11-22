@@ -16,7 +16,7 @@ const modules = [
   AppRoutingModule,
   CoreModule,
   SharedModule,
-  BrowserAnimationsModule
+  BrowserAnimationsModule,
 ]
 
 @NgModule({

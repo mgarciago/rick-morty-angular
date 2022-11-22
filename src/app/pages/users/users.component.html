@@ -1,0 +1,37 @@
+<h3>Register</h3>
+<section>
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="userForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" formControlName="username" />
+    <div
+      *ngIf="
+        !userForm.get('username')?.valid &&
+        (userForm.get('username')?.dirty || submitted)
+      "
+    >
+      Username must have a minimum of 3 characters.
+    </div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password" />
+    <div
+      *ngIf="
+        !userForm.get('password')?.valid &&
+        (userForm.get('password')?.dirty || submitted)
+      "
+    >
+     Password must contain a minimum of 8 character, an uppercase, a lowercase, a number and a special character.
+    </div>
+    <label for="repassword">Repeat Password:</label>
+    <input type="password" id="repassword" formControlName="repassword" />
+    <div
+      *ngIf="
+        !userForm.get('repassword')?.valid &&
+        (userForm.get('repassword')?.dirty || submitted)
+      "
+    >
+     This field must coincide with the password.
+    </div>
+  <button mat-raised-button type="submit" [disabled]="!userForm.valid">Register</button>
+</form>
+</section>
+

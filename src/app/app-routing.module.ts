@@ -24,9 +24,9 @@ const routes: Routes = [
     path: `creations`, loadChildren: () => import('./pages/creations/creations.module').then(m => m.CreationsModule)
   },
   {
-    path: `about`, loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule)
+    path: `users`, loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)
   },
-  {path: "", redirectTo: `home`, pathMatch: `full`}
+  {path: "", redirectTo: `users`, pathMatch: `full`}
 ];
 
 @NgModule({

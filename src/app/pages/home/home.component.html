@@ -1,4 +1,4 @@
-<div class="home-container">
+<div *ngIf="this.submitted" class="home-container">
     <h3>Home</h3>
     <div class="information-container">
         <h4>What is Rick and Morty?</h4>
@@ -20,4 +20,18 @@
         <p>My Creations: Here you can visualize the image and name of the creatures you have created. By clicking on them you can visualize their data sheet. Also, you have the option of edit or delete the creature.</p>
         <p>About: Information about the creator of the app and some links to social media.</p>
     </div>
+</div>
+
+<div *ngIf="!this.submitted">
+    <h3>Login</h3>
+    <section>
+        <form novalidate [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <label for="username">username</label>
+          <input type="text" id="username" formControlName="username" />
+          <label for="password">password</label>
+          <input type="password" id="password" formControlName="password" />
+      
+          <button mat-raised-button type="submit">Login</button>
+        </form>
+      </section>
 </div>
