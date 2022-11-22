@@ -12,7 +12,6 @@ export class CharactersService {
   public dataBaseURL: string = "http://localhost:3000/creations"
   public characterDetailURL: string = "";
   public nextPageURL: string = "";
-  public page: string = "";
 
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
   
@@ -85,7 +84,7 @@ export class CharactersService {
   }
 
   public getMoreCharacters(page: any):Observable<any>{
-    return this.http.get(`${this.charactersURL}/${page=this.page}`)
+    return this.http.get(`${this.charactersURL}?page=${page}`)
   }
 
   public getMyCreations():Observable<any> {

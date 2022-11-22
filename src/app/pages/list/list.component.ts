@@ -14,11 +14,10 @@ import { CharactersService } from 'src/app/shared/services/characters.service';
 })
 export class ListComponent implements OnInit {
   public characterList: CharacterInterface[] = [];
-  public apiInfo: CharacterResponseInterface[]=[];
-  public nextPage: string;
+  public apiInfo: CharacterInterface[]=[];
   public filter: string;
   public title: string;
-  public page?: string;
+  public page: number;
   constructor(
     private characterService: CharactersService,
     private router: Router,
@@ -26,7 +25,7 @@ export class ListComponent implements OnInit {
   ) {
     this.filter = '';
     this.title = 'Characters';
-    this.nextPage = '';
+    this.page = 1;
     
   }
 
@@ -37,8 +36,26 @@ export class ListComponent implements OnInit {
         this.characterList = data.results;
       });
 
-      this.characterService.getMoreCharacters(this.page).subscribe
 
+      
+
+  }
+
+  public nextPage() {
+    this.page++;
+    console.log(this.page)
+    this.characterService.getMoreCharacters(this.page).subscribe((data: any) => {
+      this.characterList = data.results;
+      console.log(this.characterList)
+    })
+  }
+
+  public prevPage() {
+    this.page--;
+    this.characterService.getMoreCharacters(this.page).subscribe((data: any) => {
+      this.characterList = data.results;
+      console.log(this.characterList)
+    })
   }
 
 }
