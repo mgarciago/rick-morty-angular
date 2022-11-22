@@ -18,6 +18,7 @@ export class ListComponent implements OnInit {
   public filter: string;
   public title: string;
   public page: number;
+  public numberPage: number;
   constructor(
     private characterService: CharactersService,
     private router: Router,
@@ -25,37 +26,41 @@ export class ListComponent implements OnInit {
   ) {
     this.filter = '';
     this.title = 'Characters';
-    this.page = 1;
+    this.page = 0;
+    this.numberPage = 1;
     
   }
 
   ngOnInit(): void {
-    this.characterService
-      .getCharacters()
-      .subscribe((data: CharacterResponseInterface) => {
-        this.characterList = data.results;
-      });
 
-
+    this.gatherAllCharcters();
       
 
   }
 
+  public gatherAllCharcters() {
+    for(let i = 0; i <= 40; i++) {
+      this.page = i;
+      console.log(this.page)
+      this.characterService.getMoreCharacters(this.page).subscribe((data: any) => {
+        data.results.map((character: any) => {
+          this.characterList = [...this.characterList, character];
+           console.log(this.characterList) 
+          
+        })
+      })
+    }
+  }
+
   public nextPage() {
-    this.page++;
-    console.log(this.page)
-    this.characterService.getMoreCharacters(this.page).subscribe((data: any) => {
-      this.characterList = data.results;
-      console.log(this.characterList)
-    })
+    this.numberPage += 10;
+    console.log(this.numberPage)
   }
 
   public prevPage() {
-    this.page--;
-    this.characterService.getMoreCharacters(this.page).subscribe((data: any) => {
-      this.characterList = data.results;
-      console.log(this.characterList)
-    })
-  }
+    if(this.numberPage > 1){
+      this.numberPage -= 10;
+    }
+  } 
 
 }

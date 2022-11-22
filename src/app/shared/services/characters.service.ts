@@ -79,10 +79,6 @@ export class CharactersService {
     return this.http.put(`${this.dataBaseURL}/${characterID}`, editedCharacter)
   }
 
-  public getCharacters():Observable<any> {
-    return this.http.get(this.charactersURL);
-  }
-
   public getMoreCharacters(page: any):Observable<any>{
     return this.http.get(`${this.charactersURL}?page=${page}`)
   }

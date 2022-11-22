@@ -1,9 +1,9 @@
 <h3> {{title | uppercase}}</h3>
-<button *ngIf="this.page > 1" (click)="prevPage()">Prev</button>
+<button *ngIf="this.numberPage > 1" (click)="prevPage()">Prev</button>
 <button (click)="nextPage()">Next</button>
 <input type="text" [(ngModel)]="filter">
 <div class="list-container" *ngIf="characterList">
-    <app-card *ngFor="let character of (characterList | filterObject: filter: 'name')" [character]="character">
+    <app-card *ngFor="let character of (characterList | filterObject: filter: 'name': numberPage)" [character]="character">
     </app-card>
 </div>
 
